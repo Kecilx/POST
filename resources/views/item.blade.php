@@ -1,31 +1,35 @@
 @extends('layout')
-@section('title', 'Master Category')
-@section('content-title', 'Category')
+@section('title', 'item')
+@section('content-title', 'item')
 @section('content')
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Data Category</h6>
+    <h6 class="m-0 font-weight-bold text-primary">Data Item</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <a href="{{ route('category.create') }}" class="btn btn-primary mb-3">Add New Item</a>
+            <a href="{{ route('item.create') }}" class="btn btn-primary mb-3">Add New Item</a>
             <table class="table table-bordered text-dark" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Name</th>
-                        <th>Actions</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $index => $category)
+                    @foreach ($items as $index => $item)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $category->name}}</td>
+                        <td>{{ $item->name}}</td>
+                        <td>{{ $item->price}}</td>
+                        <td>{{ $item->stock}}</td>
                         <td>
-                            <a href="{{ route('category.edit', $category->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                            <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display:inline;">
+                            <a href="{{ route('item.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('item.destroy', $item->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>

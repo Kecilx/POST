@@ -23,6 +23,7 @@
 </head>
 
 <body id="page-top">
+    <script src="https://kit.fontawesome.com/f4dcfcb525.js" crossorigin="anonymous"></script>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -31,7 +32,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -42,8 +43,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item {{ Route::is('dashboard*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('dashboard') }}">
+            <li class="nav-item {{Route::is('dashboard*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('dashboard')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -57,15 +58,15 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item {{ Route::is('category*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('category.index') }}">
+            <li class="nav-item {{Route::is('category*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('category.index')}}">
                     <i class="fas fa-fw fa-tag"></i>
                     <span>Master Category</span>
                 </a>
             </li>
 
-            <li class="nav-item {{ Route::is('items*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('items.index') }}">
+            <li class="nav-item {{Route::is('item*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('item.index')}}">
                     <i class="fas fa-list"></i>
                     <span>Master Items</span>
                 </a>
@@ -74,25 +75,26 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-             <!-- Heading -->
+            <!-- Heading -->
             <div class="sidebar-heading">
-                Transactions Data
+                Transaction Data
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item {{ Route::is('transactions*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('transactions.index') }}">
+            <li class="nav-item {{Route::is('transaction*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('transaction.index')}}">
                     <i class="fas fa-shopping-cart"></i>
-                    <span>Transactions</span>
+                    <span>Transaction</span>
                 </a>
             </li>
 
-            <li class="nav-item {{ Route::is('history_transactions*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('history_transactions.index') }}">
+            <li class="nav-item {{Route::is('transactiondetail*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('detail.index')}}">
                     <i class="fas fa-history"></i>
-                    <span>History Transactions</span>
+                    <span>History Transaction</span>
                 </a>
             </li>
+
+
 
             {{-- <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
@@ -173,11 +175,11 @@
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
+                        {{-- <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
-                            </a>
+                            </a> --}}
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
@@ -245,9 +247,9 @@
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                             </div>
-                        </li> --}}
+                        </li>
 
-                        {{-- <!-- Nav Item - Messages -->
+                        <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -311,9 +313,9 @@
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
-                        </li> --}}
+                        </li>
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <div class="topbar-divider d-none d-sm-block"></div> --}}
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">

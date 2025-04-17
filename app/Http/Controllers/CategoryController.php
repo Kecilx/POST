@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileUpdateRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
@@ -12,7 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category');
+        $categories = Category::all();
+        return view('category', compact('categories'));
     }
 
     /**

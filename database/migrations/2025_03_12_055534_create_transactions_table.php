@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->datetime('date');
-            $table->integer('total');
-            $table->integer('pay_total');
-            $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->date("date");
+            $table->integer("total");
+            $table->integer("pay_total");
         });
     }
 

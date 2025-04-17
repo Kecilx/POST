@@ -1,31 +1,35 @@
 @extends('layout')
-@section('title', 'Master Category')
-@section('content-title', 'Category')
+@section('title', 'Transaction')
+@section('content-title', 'Transaction')
 @section('content')
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Data Category</h6>
+    <h6 class="m-0 font-weight-bold text-primary">Data Transaction</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <a href="{{ route('category.create') }}" class="btn btn-primary mb-3">Add New Item</a>
+            <a href="{{ route('transaction.create') }}" class="btn btn-primary mb-3">Add New Item</a>
             <table class="table table-bordered text-dark" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Name</th>
-                        <th>Actions</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Paytotal</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $index => $category)
+                    @foreach ($transactions as $index => $transaction)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $category->name}}</td>
+                        <td>{{ $transaction->date}}</td>
+                        <td>{{ $transaction->total}}</td>
+                        <td>{{ $transaction->pay_total}}</td>
                         <td>
-                            <a href="{{ route('category.edit', $category->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                            <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display:inline;">
+                            <a href="{{ route('transaction.edit', $transaction->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ route('transaction.destroy', $transaction->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
