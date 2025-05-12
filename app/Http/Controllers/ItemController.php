@@ -10,57 +10,59 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         $items = Item::all();
-        return view('item', compact('items'));
+        return view('item.index', compact('items'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('item.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+        ]);
+
+        Item::create($request->all());
+
+        return redirect()->route('item.index')->with('success', 'Item berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Item $item)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Item $item)
     {
-        //
+        return view('item.edit', compact('item'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Item $item)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+        ]);
+
+        $item->update($request->all());
+
+        return redirect()->route('item.index')->with('success', 'Item berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Item $item)
+    public function destroy($id)
     {
-        //
+        $item = Item::findOrFail($id);
+
+        // Cek apakah ada relasi ke transaction_details
+        if ($item->transactionDetails()->exists()) {
+            return redirect()->back()->with('error', 'Item tidak bisa dihapus karena masih digunakan dalam transaksi.');
+        }
+
+        $item->delete(); // Ini akan melakukan soft delete
+        return redirect()->route('item.index')->with('success', 'Item berhasil dihapus.');
     }
+
 }

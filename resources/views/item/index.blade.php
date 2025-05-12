@@ -3,6 +3,19 @@
 @section('content-title', 'item')
 @section('content')
 
+    {{-- Alert Section --}}
+    @if (session('error'))
+    <div class="alert alert-danger" id="alert-message">
+        {{ session('error') }}
+    </div>
+    @endif
+
+    @if (session('success'))
+    <div class="alert alert-success" id="alert-message">
+        {{ session('success') }}
+    </div>
+    @endif
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary">Data Item</h6>
@@ -24,9 +37,9 @@
                     @foreach ($items as $index => $item)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $item->name}}</td>
-                        <td>{{ $item->price}}</td>
-                        <td>{{ $item->stock}}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->price }}</td>
+                        <td>{{ $item->stock }}</td>
                         <td>
                             <a href="{{ route('item.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
                             <form action="{{ route('item.destroy', $item->id) }}" method="POST" style="display:inline;">
@@ -42,4 +55,17 @@
         </div>
     </div>
 </div>
+
+    {{-- JavaScript untuk auto hide alert --}}
+    <script>
+        setTimeout(function () {
+            const alert = document.getElementById('alert-message');
+            if (alert) {
+                alert.style.transition = "opacity 0.5s ease-out";
+                alert.style.opacity = 0;
+                setTimeout(() => alert.remove(), 500);
+            }
+        }, 3000);
+        </script>
+
 @endsection
